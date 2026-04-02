@@ -4,30 +4,17 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; }
-      (inputs.import-tree ./modules);
-  {
-    imports = []
-    systems = [ "x86_64-linux" "x86_64-darwin" ];
-    perSystem = { pkgs, ... }: {
-      packages.mypackage = pkgs.ls;
-      devShell.defaults = pkgs.mkSHell {
-        packages = [ self'.packages.mypackage ];
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ (inputs.import-tree ./modules) ];
+
+      _module.args = {
+        nixOsVersion = "25.11";
+        system = "x86_64-linux";
       };
     };
-  };
-  let 
-    pkgs = nixpkgs.legacyPackages.x86_64-linux;
-  in
-  {
-    nixosConfigurations.nixCryle = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs };
-      modules = [ ./configuration.nix ];
-    };
-  };
 }
 
