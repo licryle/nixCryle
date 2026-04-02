@@ -1,5 +1,34 @@
-{ inputs, ... }: {
-  flake.nixosModules.hardwareConfig = { pkgs, ... }: {
-    imports = [ ../hardware-configuration.nix ];
+{ inputs, system, ... }: {
+  flake.nixosModules.hardwareConfig = { pkgs, lib, ... }: {
+    imports = [ ];
+
+    boot.initrd.availableKernelModules = [ "ata_piix" "mptspi" "uhci_hcd" "ehci_pci" "ahci" "sd_mod" "sr_mod" ];
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ ];
+    boot.extraModulePackages = [ ];
+
+    fileSystems."/" =
+      { device = "/dev/disk/by-uuid/826fc848-84ec-42e7-a0a2-e444c6171015";
+        fsType = "ext4";
+      };
+
+    fileSystems."/bin" =
+      { device = "/usr/bin";
+        fsType = "none";
+        options = [ "bind" ];
+      };
+
+    fileSystems."/boot" =
+      { device = "/dev/disk/by-uuid/74A4-5E78";
+        fsType = "vfat";
+        options = [ "fmask=0077" "dmask=0077" ];
+      };
+
+    swapDevices =
+      [ { device = "/dev/disk/by-uuid/75101a31-a413-41c9-ae66-ab5e0e620a19"; }
+      ];
+
+    nixpkgs.hostPlatform = lib.mkDefault system;
+
   };
 }
