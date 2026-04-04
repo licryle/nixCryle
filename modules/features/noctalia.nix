@@ -5,7 +5,9 @@
 
       package = inputs'.noctalia.packages.default; 
 
-      settings = {};
+      settings =
+        (builtins.fromJSON
+          (builtins.readFile ./noctalia.json)).settings;
     };
   };
 }
