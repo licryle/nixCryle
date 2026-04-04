@@ -27,7 +27,7 @@
       programs.kitty = {
         enable = true;
         settings = {
-          confirm_os_window_clok bise = 0;
+          confirm_os_window_clok_bise = 0;
           dynamic_background_opacity = true;
           enable_audio_bell = false;
           mouse_hide_wait = "-1.0";
