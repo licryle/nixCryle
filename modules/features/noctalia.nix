@@ -7,7 +7,7 @@
 
       settings =
         (builtins.fromJSON
-          (builtins.readFile ./noctalia.json)).settings;
+          (builtins.readFile ./noctalia.json));
     };
   };
 }
