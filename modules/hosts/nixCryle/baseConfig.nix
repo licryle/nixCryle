@@ -34,7 +34,6 @@
     services.xserver.xkb = {
         layout = "es";
         variant = "";
-        options = "altwin:ctrl_win";
     };
 
     # Enable CUPS to print documents.
