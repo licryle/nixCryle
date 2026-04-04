@@ -31,11 +31,10 @@
     console.keyMap = "es";
 
     services.xserver.enable = true;
-    # Enable the XFCE Desktop Environment.
-    services.xserver.desktopManager.xfce.enable = true;
     services.xserver.xkb = {
         layout = "es";
         variant = "";
+        options = "altwin:ctrl_win";
     };
 
     # Enable CUPS to print documents.
