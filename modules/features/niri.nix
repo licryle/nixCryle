@@ -40,31 +40,24 @@
         layout.gaps = 5;
 
         binds = {
+          "Ctrl+Space".spawn-sh = "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
-          "Mod+D".spawn-sh = "fuzzel"; # or your launcher of choice
+          "Mod+Space".toggle-overview = { };
+
           "Mod+Q".close-window = { };
-          "Mod+Shift+E".quit = { };
           "Ctrl+Alt+Delete".quit = { };
 
           # --- Navigation (Vim-style + Arrows) ---
           "Mod+Left".focus-column-left = { };
-          "Mod+H".focus-column-left = { };
           "Mod+Right".focus-column-right = { };
-          "Mod+L".focus-column-right = { };
           "Mod+Up".focus-window-up = { };
-          "Mod+K".focus-window-up = { };
           "Mod+Down".focus-window-down = { };
-          "Mod+J".focus-window-down = { };
 
           # --- Moving Windows ---
           "Mod+Ctrl+Left".move-column-left = { };
-          "Mod+Ctrl+H".move-column-left = { };
           "Mod+Ctrl+Right".move-column-right = { };
-          "Mod+Ctrl+L".move-column-right = { };
           "Mod+Ctrl+Up".move-window-up = { };
-          "Mod+Ctrl+K".move-window-up = { };
           "Mod+Ctrl+Down".move-window-down = { };
-          "Mod+Ctrl+J".move-window-down = { };
 
           # --- Sizing ---
           "Mod+Minus".set-column-width = "-10%";
@@ -102,10 +95,11 @@
           "Mod+WheelScrollUp".focus-workspace-up = { };
 
           # --- Screenshots ---
+          "Mod+P".screenshot-window = { };
           "Print".screenshot = { };
+          "Mod+alt+P".screenshot-screen = { };
           "Ctrl+Print".screenshot-screen = { };
           "Alt+Print".screenshot-window = { };
-          "Ctrl+Space".spawn-sh = "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
         };
       };
     };
