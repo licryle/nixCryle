@@ -19,6 +19,10 @@
         };
       };
       home.stateVersion = nixOsVersion; 
+      home.file = {
+        "Pictures/wallpaper.png".source = ./licryle/Pictures/wallpaper.png;
+        "Pictures/profile.jpg".source = ./licryle/Pictures/profile.jpg;
+      };
     };
   };
 }
