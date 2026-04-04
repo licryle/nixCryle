@@ -61,7 +61,8 @@
         enable = true;
 
         shellAliases = {
-        nixos-edit = "sudo vim /etc/nixos/configuration.nix && sudo nixos-rebuild switch";
+          nixos-edit = "sudo vim /etc/nixos/configuration.nix && sudo nixos-rebuild switch";
+          noctalia-save-settings = "nix run .\#featureNoctalia ipc call state all > ./modules/features/noctalia.json";
         }; 
     };
 
@@ -79,6 +80,11 @@
       wget
       # Useful apps
       google-chrome
+      #vmware
+      pkgs.open-vm-tools
+      wl-clipboard
+      wl-clip-persist
+      xclip
     ];
 
 
