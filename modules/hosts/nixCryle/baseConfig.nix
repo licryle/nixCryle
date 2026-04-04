@@ -69,7 +69,6 @@
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
 
-
     environment.systemPackages = with pkgs; [
       # Shell stuff
       coreutils
@@ -96,5 +95,7 @@
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
+
+    hardware.bluetooth.enable = true;
   };
 }

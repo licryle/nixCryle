@@ -29,7 +29,13 @@
 
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-        input.keyboard.xkb.layout = "es,es";
+        input = {
+          keyboard.xkb.layout = "es,es";
+
+          touchpad = {
+            click-method = "button-areas"; 
+          };
+        };
 
         layout.gaps = 5;
 
