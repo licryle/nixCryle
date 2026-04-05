@@ -15,6 +15,14 @@
 
       android-studio
       antigravity
+
+      (vscode-with-extensions.override {
+        vscodeExtensions = with vscode-extensions; [
+          bbenoist.nix
+        ];
+      })
     ];
+
+    environment.variables.EDITOR = "code";
   };
 }
