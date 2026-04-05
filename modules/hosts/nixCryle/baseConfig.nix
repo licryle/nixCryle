@@ -79,6 +79,7 @@
       wget
       # Useful apps
       google-chrome
+      vlc
       #vmware
       pkgs.open-vm-tools
       wl-clipboard
