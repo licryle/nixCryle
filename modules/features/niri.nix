@@ -100,6 +100,30 @@
           "Mod+alt+P".screenshot-screen = { };
           "Ctrl+Print".screenshot-screen = { };
           "Alt+Print".screenshot-window = { };
+
+          # ---Brightness ---
+          "XF86MonBrightnessUp".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call brightness increase";
+          "XF86MonBrightnessDown".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call brightness decrease";
+
+          # Media keys
+          "XF86AudioPrev".spawn-sh = "${lib.getExe self'.packages.featureNoctalia} ipc call media previous";
+          "XF86AudioPlay".spawn-sh = "${lib.getExe self'.packages.featureNoctalia} ipc call media playPause";
+          "XF86AudioNext".spawn-sh = "${lib.getExe self'.packages.featureNoctalia} ipc call media next";
+
+          "XF86AudioMute".spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioRaiseVolume".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call volume increase";
+          "XF86AudioLowerVolume".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call volume decrease";
+            
+          # Mission‑control / overview (Fn+F3 etc.)
+          "XF86LaunchA".toggle-overview = { };
+
+          # Spotlight‑style launcher (Fn+Space)
+          "XF86Search".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
         };
       };
     };
