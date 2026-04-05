@@ -42,7 +42,8 @@
         binds = {
           "Ctrl+Space".spawn-sh = "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
-          "Mod+Space".toggle-overview = { };
+
+          "XF86LaunchA".toggle-overview = { };
 
           "Mod+Q".close-window = { };
           "Ctrl+Alt+Delete".quit = { };
@@ -133,8 +134,6 @@
 
           # Spotlight‑style launcher (Fn+Space)
           "XF86Search".spawn-sh =
-            "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
-          "XF86LaunchA".spawn-sh =
             "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
           "XF86LaunchB".spawn-sh =
             "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
