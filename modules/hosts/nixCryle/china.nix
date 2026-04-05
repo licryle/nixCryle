@@ -1,5 +1,29 @@
 {inputs, ...}: {
   flake.nixosModules.china = { pkgs, ... }: {
     programs.clash-verge.enable = true;
+
+    i18n.inputMethod = {
+      # Available since NixOS 24.11
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+        waylandFrontend = true;
+        ignoreUserConfig = true;    # Use settings below, ignore user config
+        addons = with pkgs; [
+          qt6Packages.fcitx5-chinese-addons
+        ];
+        settings = {
+          inputMethod = {
+            "Groups/0" = {
+              Name = "Default";
+              "Default Layout" = "es";
+              DefaultIM = "keyboard-es";
+            };
+            "Groups/0/Items/0".Name = "keyboard-es";
+            "Groups/0/Items/1".Name = "pinyin";
+          };
+        };
+      };
+    };
   };
 }

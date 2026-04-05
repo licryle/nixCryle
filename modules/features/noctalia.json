@@ -107,13 +107,6 @@
           "useCustomFont": false
         },
         {
-          "displayMode": "onhover",
-          "iconColor": "none",
-          "id": "KeyboardLayout",
-          "showIcon": false,
-          "textColor": "none"
-        },
-        {
           "deviceNativePath": "__default__",
           "displayMode": "icon-always",
           "hideIfIdle": false,
