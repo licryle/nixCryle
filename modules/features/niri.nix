@@ -44,6 +44,7 @@
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
 
           "XF86LaunchA".toggle-overview = { };
+          "Mod+Space".toggle-overview = { };
 
           "Mod+Q".close-window = { };
           "Ctrl+Alt+Delete".quit = { };
