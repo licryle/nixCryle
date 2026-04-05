@@ -57,7 +57,7 @@
         #media-session.enable = true;
     };
 
-    programs.zsh = {
+    programs.fish = {
         enable = true;
 
         shellAliases = {

@@ -1,7 +1,7 @@
 {inputs, nixOsVersion, ...}: {
   flake.nixosModules.userLicryle = { pkgs, ... }: {
     users.users.licryle = {
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         isNormalUser = true;
         description = "Licryle";
         extraGroups = [ "networkmanager" "wheel" ];
