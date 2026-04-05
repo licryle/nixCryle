@@ -47,6 +47,13 @@
           "Mod+Q".close-window = { };
           "Ctrl+Alt+Delete".quit = { };
 
+          # --- Toggle inputs
+          "Alt+Space".spawn-sh = "${pkgs.fcitx5}/bin/fcitx5-remote -t";
+
+          # --- Backlight
+          "XF86KbdBrightnessUp".spawn-sh = "${pkgs.brightnessctl}/bin/brightnessctl -d 'smc::kbd_backlight' s 25%+";
+          "XF86KbdBrightnessDown".spawn-sh = "${pkgs.brightnessctl}/bin/brightnessctl -d 'smc::kbd_backlight' s 25%-";
+
           # --- Navigation (Vim-style + Arrows) ---
           "Mod+Left".focus-column-left = { };
           "Mod+Right".focus-column-right = { };
@@ -118,11 +125,18 @@
           "XF86AudioLowerVolume".spawn-sh =
             "${lib.getExe self'.packages.featureNoctalia} ipc call volume decrease";
             
-          # Mission‑control / overview (Fn+F3 etc.)
-          "XF86LaunchA".toggle-overview = { };
+          # Lock screen
+          "Ctrl+L".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call lockScreen lock";
+          "Mod+L".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call lockScreen lock";
 
           # Spotlight‑style launcher (Fn+Space)
           "XF86Search".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
+          "XF86LaunchA".spawn-sh =
+            "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
+          "XF86LaunchB".spawn-sh =
             "${lib.getExe self'.packages.featureNoctalia} ipc call launcher toggle";
         };
       };
