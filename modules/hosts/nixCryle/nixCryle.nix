@@ -14,6 +14,7 @@
       self.nixosModules.niri
 
       inputs.home-manager.nixosModules.home-manager
+      inputs.sysc-greet.nixosModules.default
       self.nixosModules.userLicryle
     ];
 

@@ -14,6 +14,11 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sysc-greet = {
+      url = "github:Nomadcxx/sysc-greet";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {

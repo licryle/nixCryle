@@ -97,5 +97,11 @@
     # networking.firewall.enable = false;
 
     hardware.bluetooth.enable = true;
+
+
+    services.sysc-greet = {
+      enable = true;
+      compositor = "niri";
+    };
   };
 }
