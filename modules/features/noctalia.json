@@ -198,7 +198,7 @@
     "showChangelogOnStartup": true,
     "telemetryEnabled": false,
     "enableLockScreenCountdown": true,
-    "lockScreenCountdownDuration": 10000,
+    "lockScreenCountdownDuration": 2000,
     "autoStartAuth": false,
     "allowPasswordWithFprintd": false,
     "clockStyle": "custom",
