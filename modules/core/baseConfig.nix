@@ -96,6 +96,7 @@
       pkgs.open-vm-tools
       wl-clipboard
       wl-clip-persist
+      wtype
       xclip
     ];
 

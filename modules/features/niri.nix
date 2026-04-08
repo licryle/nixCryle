@@ -49,6 +49,13 @@
           "Mod+Q".close-window = { };
           "Ctrl+Alt+Delete".quit = { };
 
+          # --- Extra Copy/Paste / Undo / Redo
+          "Mod+C".spawn-sh = "wtype -M ctrl c -m ctrl";
+          "Mod+X".spawn-sh = "wtype -M ctrl x -m ctrl";
+          "Mod+V".spawn-sh = "wtype -M ctrl v -m ctrl";
+          "Mod+Z".spawn-sh = "wtype -M ctrl z -m ctrl";
+          "Mod+Y".spawn-sh = "wtype -M ctrl y -m ctrl";
+
           # --- Toggle inputs
           "Alt+Space".spawn-sh = "${pkgs.fcitx5}/bin/fcitx5-remote -t";
 
@@ -76,7 +83,7 @@
           "Mod+R".switch-preset-column-width = { };
           "Mod+F".maximize-column = { };
           "Mod+Shift+F".fullscreen-window = { };
-          "Mod+C".center-column = { };
+          "Mod+G".center-column = { };
 
           # --- Workspaces (1-9) ---
           "Mod+1".focus-workspace = 1;
