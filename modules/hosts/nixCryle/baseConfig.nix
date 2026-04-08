@@ -77,6 +77,8 @@
       lf
       gnugrep
       wget
+      fzf
+      fishPlugins.fzf-fish
       # Useful apps
       google-chrome
       vlc
@@ -90,6 +92,13 @@
 
     # Enable the OpenSSH daemon.
     # services.openssh.enable = true;
+
+    programs.ssh.extraConfig = ''
+      Host *
+        ServerAliveInterval 60
+        ServerAliveCountMax 3
+        TCPKeepAlive yes
+    '';
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
