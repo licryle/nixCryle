@@ -1,14 +1,14 @@
-{inputs, nixOsVersion, ...}: {
-  flake.nixosModules.userLicryle = { pkgs, ... }: {
-    users.users.licryle = {
+{inputs, ...}: {
+  flake.nixosModules.userLicryle = { pkgs, user, nixOsVersion, ... }: {
+    users.users.${user} = {
         shell = pkgs.fish;
         isNormalUser = true;
-        description = "Licryle";
+        description = user;
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
         ];
     };
-    home-manager.users.licryle = { pkgs, ... }: {
+    home-manager.users.${user} = { pkgs, ... }: {
       programs.git = {
       enable = true;
         settings = {
@@ -20,8 +20,8 @@
       };
       home.stateVersion = nixOsVersion; 
       home.file = {
-        "Pictures/wallpaper.png".source = ./licryle/Pictures/wallpaper.png;
-        "Pictures/profile.jpg".source = ./licryle/Pictures/profile.jpg;
+        "Pictures/wallpaper.png".source = ./${user}/Pictures/wallpaper.png;
+        "Pictures/profile.jpg".source = ./${user}/Pictures/profile.jpg;
       };
 
       programs.kitty = {

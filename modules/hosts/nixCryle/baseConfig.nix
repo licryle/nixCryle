@@ -1,5 +1,5 @@
-{inputs, nixOsVersion, ...}: {
-  flake.nixosModules.baseConfig = { pkgs, ... }: {
+{inputs, ...}: {
+  flake.nixosModules.baseConfig = { pkgs, nixOsVersion, ... }: {
     networking.hostName = "nixCryle"; # Define your hostname.
     networking.networkmanager.enable = true;
     nixpkgs.config.allowUnfree = true;
