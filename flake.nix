@@ -1,3 +1,9 @@
+## TODO
+## Lock screen on sleep
+## Find and style file manager
+## Fix auto update
+## Login screen stylings
+## Stylix?
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
