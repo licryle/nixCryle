@@ -72,7 +72,7 @@
 
         shellAliases = {
           nixos-edit = "sudo vim /etc/nixos/configuration.nix && sudo nixos-rebuild switch";
-          noctalia-save-settings = "nix run .\#featureNoctalia ipc call state all > ./modules/features/noctalia.json";
+          noctalia-save-settings = "nix run .\#noctalia ipc call state all > ./modules/features/noctalia.json";
         }; 
     };
 
