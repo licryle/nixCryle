@@ -98,8 +98,23 @@
       wl-clip-persist
       wtype
       xclip
+      # File manager
+      pcmanfm
+      gvfs
+      file-roller
+      lxterminal
     ];
 
+    services = {
+      gvfs.enable = true;
+      dbus.packages = [ pkgs.gvfs ];
+      udisks2.enable = true;
+    };
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
 
     # Enable the OpenSSH daemon.
     # services.openssh.enable = true;
