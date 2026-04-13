@@ -24,5 +24,7 @@
     ];
 
     environment.variables.EDITOR = "code";
+
+    programs.direnv.enable = true;
   };
 }
