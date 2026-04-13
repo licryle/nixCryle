@@ -109,7 +109,14 @@
       gvfs
       file-roller
       lxterminal
+      # Themes & Icons
+      qt6Packages.qt6ct
+      papirus-icon-theme
     ];
+
+    environment.sessionVariables = {
+      QT_QPA_PLATFORMTHEME = "qt6ct";
+    };
 
     services = {
       gvfs.enable = true;
