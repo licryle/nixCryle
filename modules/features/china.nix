@@ -1,6 +1,10 @@
 {inputs, keyboardLayout, ...}: {
   flake.nixosModules.china = { pkgs, ... }: {
-    programs.clash-verge.enable = true;
+    programs.clash-verge = {
+      enable = true;
+      tunMode = true;
+      serviceMode = true;
+    };
 
     i18n.inputMethod = {
       # Available since NixOS 24.11
