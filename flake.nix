@@ -36,6 +36,7 @@
       { withSystem, ... }:
       let
         user = "licryle";
+        keyboardLayout = "es";
         nixOsVersion = "26.05";
         linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
         darwinSystems = [ "x86_64-darwin" "aarch64-darwin" ];
@@ -44,7 +45,7 @@
       {
         systems = allSystems;
 
-        _module.args = { inherit user nixOsVersion; };
+        _module.args = { inherit user nixOsVersion keyboardLayout; };
 
         imports = [
           (inputs.import-tree ./modules)

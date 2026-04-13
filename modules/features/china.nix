@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{inputs, keyboardLayout, ...}: {
   flake.nixosModules.china = { pkgs, ... }: {
     programs.clash-verge.enable = true;
 
@@ -16,10 +16,10 @@
           inputMethod = {
             "Groups/0" = {
               Name = "Default";
-              "Default Layout" = "es";
-              DefaultIM = "keyboard-es";
-            };
-            "Groups/0/Items/0".Name = "keyboard-es";
+              "Default Layout" = keyboardLayout;
+              DefaultIM = "keyboard-${keyboardLayout}";
+            };  
+            "Groups/0/Items/0".Name = "keyboard-${keyboardLayout}";
             "Groups/0/Items/1".Name = "pinyin";
           };
         };

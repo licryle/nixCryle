@@ -1,6 +1,5 @@
 {inputs, ...}: {
-  flake.nixosModules.baseConfig = { pkgs, nixOsVersion, ... }: {
-    networking.hostName = "nixCryle"; # Define your hostname.
+  flake.nixosModules.baseConfig = { pkgs, nixOsVersion, keyboardLayout, ... }: {
     networking.networkmanager.enable = true;
     nixpkgs.config.allowUnfree = true;
 
@@ -28,11 +27,11 @@
     };
     time.timeZone="Asia/Shanghai";
 
-    console.keyMap = "es";
+    console.keyMap = keyboardLayout;
 
     services.xserver.enable = true;
     services.xserver.xkb = {
-        layout = "es";
+        layout = keyboardLayout;
         variant = "";
     };
 
