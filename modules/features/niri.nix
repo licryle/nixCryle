@@ -6,7 +6,13 @@
     };
   };
 
-  perSystem = { pkgs, lib, self', ... }: {
+  perSystem = { pkgs, lib, self', ... }:
+  let 
+    noctalia = cmd: [
+      "${lib.getExe self'.packages.noctalia} ipc call ${cmd}"
+    ];
+  in
+  {
     packages.featureNiri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
 
@@ -40,7 +46,7 @@
         layout.gaps = 5;
 
         binds = {
-          "Ctrl+Space".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
+          "Ctrl+Space".spawn-sh = noctalia "launcher toggle";
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
 
           "XF86LaunchA".toggle-overview = { };
@@ -119,32 +125,28 @@
 
           # ---Brightness ---
           "XF86MonBrightnessUp".spawn-sh =
-            "${lib.getExe self'.packages.noctalia} ipc call brightness increase";
+            noctalia "brightness increase";
           "XF86MonBrightnessDown".spawn-sh =
-            "${lib.getExe self'.packages.noctalia} ipc call brightness decrease";
+            noctalia "brightness decrease";
 
           # Media keys
-          "XF86AudioPrev".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call media previous";
-          "XF86AudioPlay".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call media playPause";
-          "XF86AudioNext".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call media next";
+          "XF86AudioPrev".spawn-sh = noctalia "media previous";
+          "XF86AudioPlay".spawn-sh = noctalia "media playPause";
+          "XF86AudioNext".spawn-sh = noctalia "media next";
 
           "XF86AudioMute".spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86AudioRaiseVolume".spawn-sh =
-            "${lib.getExe self'.packages.noctalia} ipc call volume increase";
+            noctalia "volume increase";
           "XF86AudioLowerVolume".spawn-sh =
-            "${lib.getExe self'.packages.noctalia} ipc call volume decrease";
+            noctalia "volume decrease";
             
           # Lock screen
-          "Ctrl+L".spawn-sh =
-            "${lib.getExe self'.packages.noctalia} ipc call lockScreen lock";
-          "Mod+L".spawn-sh =
-            "${lib.getExe self'.packages.noctalia} ipc call lockScreen lock";
+          "Ctrl+L".spawn-sh = noctalia "lockScreen lock";
+          "Mod+L".spawn-sh =  noctalia "lockScreen lock";
 
           # Spotlight‑style launcher (Fn+Space)
-          "XF86Search".spawn-sh =
-            "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
-          "XF86LaunchB".spawn-sh =
-            "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
+          "XF86Search".spawn-sh = noctalia "launcher toggle";
+          "XF86LaunchB".spawn-sh = noctalia "launcher toggle";
         };
       };
     };
