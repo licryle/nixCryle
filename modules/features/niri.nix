@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ self, inputs, keyboardLayout, ... }: {
   flake.nixosModules.niri = { pkgs, lib, ... }: {
     programs.niri = {
       enable = true;
@@ -43,7 +43,7 @@
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
         input = {
-          keyboard.xkb.layout = "es,es";
+          keyboard.xkb.layout = keyboardLayout;
 
           touchpad = {
             click-method = "button-areas"; 
