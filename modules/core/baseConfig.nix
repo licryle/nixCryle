@@ -137,5 +137,7 @@
       enable = true;
       compositor = "niri";
     };
+
+    programs.dconf.enable = true;
   };
 }
