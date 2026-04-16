@@ -1,5 +1,4 @@
 ## TODO
-## Fix auto update
 ## Login screen stylings
 {
   inputs = {

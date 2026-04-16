@@ -5,16 +5,19 @@
 
     virtualisation.vmware.guest.enable = true;
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
     system.stateVersion = nixOsVersion;
     system.autoUpgrade = {
       enable = true;
       flake = "github:licryle/nixCryle";
       dates = "daily";
       flags = [
-        "--update-input" "nixpkgs"
         "-L"
         "--impure"
+        "--no-write-lock-file"
       ];
       allowReboot = false;
     };
