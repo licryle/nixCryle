@@ -1,7 +1,6 @@
 ## TODO
 ## Fix auto update
 ## Login screen stylings
-## Stylix?
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
