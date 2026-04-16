@@ -65,12 +65,6 @@
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
-        # If you want to use JACK applications, uncomment this
-        #jack.enable = true;
-
-        # use the example session manager (no others are packaged yet so this is enabled by default,
-        # no need to redefine it in your config for now)
-        #media-session.enable = true;
     };
 
     programs.fish = {
@@ -129,21 +123,12 @@
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
-    # Enable the OpenSSH daemon.
-    # services.openssh.enable = true;
-
     programs.ssh.extraConfig = ''
       Host *
         ServerAliveInterval 60
         ServerAliveCountMax 3
         TCPKeepAlive yes
     '';
-
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
 
     hardware.bluetooth.enable = true;
 
