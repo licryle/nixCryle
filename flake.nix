@@ -1,5 +1,4 @@
 ## TODO
-## Find and style file manager
 ## Fix auto update
 ## Login screen stylings
 ## Stylix?
