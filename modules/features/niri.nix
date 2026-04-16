@@ -56,6 +56,8 @@
         };
 
         layout.gaps = 5;
+        layout.struts.bottom = (builtins.fromJSON
+          (builtins.readFile ./noctalia.json)).dock.size * 80;
 
         binds = {
           "Ctrl+Space".spawn-sh = noctalia "launcher toggle";
