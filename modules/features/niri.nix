@@ -43,7 +43,10 @@
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
         input = {
-          keyboard.xkb.layout = keyboardLayout;
+          keyboard = {
+            xkb.layout = keyboardLayout;
+            numlock = true;
+          };
 
           touchpad = {
             click-method = "button-areas"; 
