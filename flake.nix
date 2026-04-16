@@ -1,5 +1,4 @@
 ## TODO
-## Lock screen on sleep
 ## Find and style file manager
 ## Fix auto update
 ## Login screen stylings

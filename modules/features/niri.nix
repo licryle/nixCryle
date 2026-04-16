@@ -8,8 +8,9 @@
 
   perSystem = { pkgs, lib, self', ... }:
   let 
+    noct-exe = lib.getExe self'.packages.noctalia;
     noctalia = cmd: [
-      "${lib.getExe self'.packages.noctalia} ipc call ${cmd}"
+      "${noct-exe} ipc call ${cmd}"
     ];
   in
   {
@@ -26,12 +27,18 @@
       ];    
 
       v2-settings = true;
-      settings = {        
+      settings = {
         spawn-at-startup = [
           (lib.getExe self'.packages.noctalia)
           "${pkgs.open-vm-tools}/bin/vmware-user"
           "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.wl-clipboard}/bin/wl-copy --primary --paste-once"
         ];
+
+        switch-events = {
+          "lid-close" = {
+            spawn = [ "sh" "-c" "${noct-exe} ipc call lockScreen lock" ];
+          };
+        };
 
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
@@ -41,6 +48,8 @@
           touchpad = {
             click-method = "button-areas"; 
           };
+
+          disable-power-key-handling = true; # Don't let Niri handle the power button > straight to power off.
         };
 
         layout.gaps = 5;
@@ -74,6 +83,10 @@
           "Mod+Right".focus-column-right = { };
           "Mod+Up".focus-window-up = { };
           "Mod+Down".focus-window-down = { };
+
+          # --- Mouse Wheel Support ---
+          "Mod+WheelScrollDown".focus-column-right = { };
+          "Mod+WheelScrollUp".focus-column-left = { };
 
           # --- Moving Windows ---
           "Mod+Ctrl+Left".move-column-left = { };
@@ -111,10 +124,6 @@
           "Mod+Ctrl+7".move-column-to-workspace = 7;
           "Mod+Ctrl+8".move-column-to-workspace = 8;
           "Mod+Ctrl+9".move-column-to-workspace = 9;
-
-          # --- Mouse Wheel Support ---
-          "Mod+WheelScrollDown".focus-workspace-down = { };
-          "Mod+WheelScrollUp".focus-workspace-up = { };
 
           # --- Screenshots ---
           "Mod+P".screenshot-window = { };
