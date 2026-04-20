@@ -1,7 +1,7 @@
 { inputs, self, user, nixOsVersion, keyboardLayout, ... }: {
   flake.nixosConfigurations.proCryle = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.baseSystem
+      self.nixosModules.baseSystemImpureHardware
       {
         networking.hostName = "proCryle";
       }
