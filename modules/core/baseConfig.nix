@@ -92,6 +92,7 @@
       wget
       fzf
       fishPlugins.fzf-fish
+      htop
       # Useful apps
       google-chrome
       vlc
