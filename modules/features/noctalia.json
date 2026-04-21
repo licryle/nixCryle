@@ -127,6 +127,12 @@
           "pinned": []
         },
         {
+          "displayMode": "onhover",
+          "iconColor": "none",
+          "id": "Network",
+          "textColor": "none"
+        },
+        {
           "hideWhenZero": false,
           "hideWhenZeroUnread": false,
           "iconColor": "none",
