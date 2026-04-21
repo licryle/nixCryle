@@ -8,8 +8,8 @@
 
     ## ClashVerge https://github.com/NixOS/nixpkgs/issues/477636
     networking.firewall = {
-      trustedInterfaces = [ "Mihomo" ];
-      extraReversePathFilterRules = ''iifname { "Mihomo" } accept comment "trusted interface"'';
+      trustedInterfaces = [ "utun" ];
+      extraReversePathFilterRules = ''iifname { "utun" } accept comment "trusted interface"'';
     };
 
     i18n.inputMethod = {
