@@ -9,15 +9,8 @@
         ];
     };
     home-manager.users.${user} = { pkgs, ... }: {
-      programs.git = {
-      enable = true;
-        settings = {
-            user = {
-            name  = "Cyrille Berliat";
-            email = "cyrille@berliat.fr";
-          };
-        };
-      };
+      programs.git.enable = true;
+
       home.stateVersion = nixOsVersion; 
       home.file = {
         "Pictures/wallpaper.png".source = ./${user}/Pictures/wallpaper.png;
