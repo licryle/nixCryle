@@ -78,7 +78,9 @@
           "textColor": "none",
           "useMonospaceFont": true,
           "usePadding": false
-        },
+        }
+      ],
+      "center": [
         {
           "compactMode": false,
           "hideMode": "hidden",
@@ -94,9 +96,7 @@
           "textColor": "none",
           "useFixedWidth": false,
           "visualizerType": "linear"
-        }
-      ],
-      "center": [
+        },
         {
           "clockColor": "none",
           "customFont": "",
