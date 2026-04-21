@@ -6,24 +6,10 @@
         networking.hostName = "proCryle";
       }
 
-      ({ lib, pkgs, ... }: {
-        nixpkgs.config = {
-          allowUnfree = true;
-          allowInsecurePredicate = pkg: lib.elem (lib.getName pkg) [
-            "broadcom-sta"
-          ];
-        };
-
-        boot = {
-          kernelModules = [ "wl" ];
-          extraModulePackages = [ pkgs.linuxPackages.broadcom_sta ];
-        };
-        boot.blacklistedKernelModules = [ "b43" "bcma" ];
-
-        services.xserver.videoDrivers = [ "intel" ];
+      self.nixosModules.appleIntel
+      {
         hardware.graphics.enable = true;
-        hardware.facetimehd.enable = true;
-      })
+      }
     ];
 
     specialArgs = {
