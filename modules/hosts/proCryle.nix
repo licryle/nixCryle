@@ -18,6 +18,7 @@
           kernelModules = [ "wl" ];
           extraModulePackages = [ pkgs.linuxPackages.broadcom_sta ];
         };
+        boot.blacklistedKernelModules = [ "b43" "bcma" ];
 
         services.xserver.videoDrivers = [ "intel" ];
         hardware.graphics.enable = true;
