@@ -3,7 +3,10 @@
   # sudo nixos-rebuild switch --flake .#nixCryle --impure
   flake.nixosConfigurations.nixCryle = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.baseSystemImpureHardware
+      self.nixosModules.impureHardware
+      self.nixosModules.metalHardware
+      self.nixosModules.tuiSystem
+      self.nixosModules.niriDesktop
       {
         networking.hostName = "nixCryle";
       }

@@ -1,11 +1,15 @@
 { inputs, self, user, nixOsVersion, keyboardLayout, ... }: {
-  flake.nixosConfigurations.proCryle = inputs.nixpkgs.lib.nixosSystem {
+  # sudo nixos-rebuild switch --flake .#airCryle --impure
+  flake.nixosConfigurations.airCryle = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.baseSystemImpureHardware
+      self.nixosModules.impureHardware
+      self.nixosModules.metalHardware
+      self.nixosModules.appleIntelHardware
+      self.nixosModules.tuiSystem
+      self.nixosModules.niriDesktop
       {
-        networking.hostName = "proCryle";
+        networking.hostName = "airCryle";
       }
-      self.nixosModules.appleIntel
     ];
 
     specialArgs = {
