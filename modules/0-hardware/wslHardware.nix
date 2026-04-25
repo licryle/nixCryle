@@ -8,5 +8,9 @@
       enable = true;
       defaultUser = user;
     };
+    
+    environment.systemPackages = with pkgs; [
+      dos2unix
+    ];
   };
 }
