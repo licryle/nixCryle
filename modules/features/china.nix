@@ -11,6 +11,7 @@
       trustedInterfaces = [ "utun" ];
       extraReversePathFilterRules = ''iifname { "utun" } accept comment "trusted interface"'';
     };
+    networking.nftables.enable = true;
 
     i18n.inputMethod = {
       # Available since NixOS 24.11
