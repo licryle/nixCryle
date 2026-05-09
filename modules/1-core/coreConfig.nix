@@ -64,6 +64,8 @@
       fzf
       fishPlugins.fzf-fish
       htop
+      yazi
+      btop
     ];
 
     programs.ssh.extraConfig = ''

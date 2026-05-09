@@ -12,6 +12,7 @@
     environment.systemPackages = with pkgs; [
       vim
       gh
+      lazygit
 
       android-studio
       antigravity
