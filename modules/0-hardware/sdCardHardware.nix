@@ -68,6 +68,14 @@
       resize2fs = "${pkgs.e2fsprogs}/bin/resize2fs";
     };
 
+    # Attempt to ensure the image is usable on a wide range of hardware by including common firmware and enabling unfree firmware
+    hardware.enableRedistributableFirmware = true;
+    environment.systemPackages = [
+      pkgs.linux-firmware
+    ];
+    nixpkgs.config.allowUnfree = true;
+    services.xserver.videoDrivers = lib.mkForce [ "modesetting" ];
+
     zramSwap.enable = true;
   };
 }
