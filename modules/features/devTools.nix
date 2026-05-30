@@ -14,6 +14,7 @@
       git-filter-repo
       gh
       lazygit
+      pv
 
       android-studio
       antigravity
