@@ -45,7 +45,6 @@
       enable = true;
 
       shellAliases = {
-        nixos-edit = "sudo vim /etc/nixos/configuration.nix && sudo nixos-rebuild switch";
         noctalia-save-settings = "nix run .\\#noctalia ipc call state all > ./modules/features/noctalia.json";
         please = "sudo $(fc -ln -1)";
       };
