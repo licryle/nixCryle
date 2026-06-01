@@ -1,11 +1,5 @@
 { inputs, ... }: {
   flake.nixosModules.coreConfig = { pkgs, nixOsVersion, keyboardLayout, ... }: {
-    nixpkgs.config.allowUnfree = true;
-
-    nix.settings = {
-      auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
-    };
     system.stateVersion = nixOsVersion;
     system.autoUpgrade = {
       enable = true;
@@ -17,12 +11,6 @@
         "--no-write-lock-file"
       ];
       allowReboot = false;
-    };
-
-    nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 2w";
     };
 
     i18n.defaultLocale = "en_US.UTF-8";
