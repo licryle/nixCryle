@@ -75,5 +75,10 @@
         ServerAliveCountMax 3
         TCPKeepAlive yes
     '';
+
+    security.sudo.extraConfig = # sh
+    ''
+      Defaults pwfeedback # Make typed password visible as asterisks
+    '';
   };
 }
