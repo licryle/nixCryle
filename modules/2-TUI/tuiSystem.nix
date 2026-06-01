@@ -3,6 +3,7 @@
   flake.nixosModules.tuiSystem = { config, lib, ... }: {
     imports = [
       self.nixosModules.nix
+      self.nixosModules.podman
       self.nixosModules.coreConfig
       self.nixosModules.devTools
       self.nixosModules.userLicryle
