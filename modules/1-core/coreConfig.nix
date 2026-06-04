@@ -54,6 +54,7 @@
       htop
       yazi
       btop
+      unzip
     ];
 
     programs.ssh.extraConfig = ''
