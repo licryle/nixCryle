@@ -133,6 +133,12 @@
           "textColor": "none"
         },
         {
+          "displayMode": "onhover",
+          "iconColor": "none",
+          "id": "Bluetooth",
+          "textColor": "none"
+        },
+        {
           "hideWhenZero": false,
           "hideWhenZeroUnread": false,
           "iconColor": "none",
