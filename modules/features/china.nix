@@ -1,5 +1,10 @@
 {inputs, keyboardLayout, ...}: {
   flake.nixosModules.china = { pkgs, ... }: {
+    nix.settings.substituters = [
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://cache.nixos.org" # Official cache for fallback
+    ];
+
     programs.clash-verge = {
       enable = true;
       tunMode = true;
