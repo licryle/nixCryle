@@ -2,7 +2,7 @@
   # WSL Config
   # sudo nixos-rebuild switch --flake .#winCryle
   # or better
-  # sudo nixos-rebuild switch --upgrade --flake .#winCryle
+  # nix flake update && sudo nixos-rebuild switch --flake .#winCryle
   flake.nixosConfigurations.winCryle = withSystem "x86_64-linux" ({ system, ... }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;

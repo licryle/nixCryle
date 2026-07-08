@@ -2,7 +2,7 @@
 
   # sudo nixos-rebuild switch --flake .#nixCryle --impure
   # or better
-  # sudo nixos-rebuild switch --upgrade --flake .#nixCryle --impure
+  # nix flake update && sudo nixos-rebuild switch --flake .#nixCryle --impure
   flake.nixosConfigurations.nixCryle = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.impureHardware
