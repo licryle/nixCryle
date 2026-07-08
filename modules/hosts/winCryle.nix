@@ -1,6 +1,8 @@
 { inputs, self, withSystem, user, nixOsVersion, keyboardLayout, ... }: {
   # WSL Config
   # sudo nixos-rebuild switch --flake .#winCryle
+  # or better
+  # sudo nixos-rebuild switch --upgrade --flake .#winCryle
   flake.nixosConfigurations.winCryle = withSystem "x86_64-linux" ({ system, ... }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;

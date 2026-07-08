@@ -1,5 +1,7 @@
 { inputs, self, user, nixOsVersion, keyboardLayout, ... }: {
   # sudo nixos-rebuild switch --flake .#airCryle --impure
+  # or better
+  # sudo nixos-rebuild switch --upgrade --flake .#airCryle --impure
   flake.nixosConfigurations.airCryle = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.impureHardware
