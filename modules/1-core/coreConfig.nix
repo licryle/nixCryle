@@ -55,6 +55,7 @@
       yazi
       btop
       unzip
+      ncdu
     ];
 
     programs.ssh.extraConfig = ''
