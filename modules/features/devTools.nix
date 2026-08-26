@@ -17,7 +17,7 @@
       pv
 
       android-studio
-      antigravity
+      antigravity-ide
 
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
