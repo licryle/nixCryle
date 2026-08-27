@@ -12,7 +12,7 @@
       imports = [ inputs.noctalia.homeModules.default ];
       programs.noctalia = {
         enable = true;
-        settings = ../3-GUI/noctalia-v5.toml;
+        settings = ./licryle/noctalia-v5.toml;
       };
 
       programs.git.enable = true;

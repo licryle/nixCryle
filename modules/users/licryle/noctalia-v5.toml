@@ -3,11 +3,11 @@ order = [ "TopBar" ]
 
     [bar.TopBar]
     background_opacity = 0.67999998480081558
-    center = [ "battery", "clock", "tray", "media" ]
-    end = [ "wallpaper", "network", "bluetooth", "brightness", "notifications", "session" ]
+    center = [ "battery", "clock", "sysmon" ]
+    end = [ "tray", "wallpaper", "network", "bluetooth", "brightness", "notifications", "session" ]
     margin_ends = 20
     margin_opposite_edge = 3
-    start = [ "launcher", "control-center", "workspaces", "clipboard", "volume" ]
+    start = [ "launcher", "control-center", "workspaces", "clipboard", "volume", "media" ]
     widget_spacing = 15
 
 [battery]
@@ -21,7 +21,7 @@ icon_size = 32
 item_spacing = 8
 magnification_scale = 1.2500000037252903
 main_axis_padding = 8
-pinned = [ "kitty", "code", "google-chrome" ]
+pinned = [ "kitty", "code", "vlc", "google-chrome" ]
 radius_bottom_left = 0
 radius_bottom_right = 0
 show_dots = true
