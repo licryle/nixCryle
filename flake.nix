@@ -1,5 +1,3 @@
-## TODO
-## Login screen stylings
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

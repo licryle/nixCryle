@@ -1,4 +1,4 @@
-{ self, inputs, user, ... }: {
+{ self, inputs, user, keyboardLayout, ... }: {
   # Full desktop stack: desktopConfig → systemConfig → coreConfig
   flake.nixosModules.niriNoctaliaDesktop = { config, lib, pkgs, ... }: {
     imports = [
@@ -17,7 +17,12 @@
 
     programs.noctalia-greeter = {
       enable = true;
-      settings = ./noctalia-v5.toml;
+
+      settings = {
+        keyboard = {
+          layout = keyboardLayout;
+        };
+      };
     };
   };
 }

@@ -33,7 +33,10 @@
 
     programs.dconf.enable = true;
 
+    security.polkit.enable = true;
+
     environment.systemPackages = with pkgs; [
+      polkit_gnome
       # Useful apps
       google-chrome
       vlc

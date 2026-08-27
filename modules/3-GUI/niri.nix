@@ -28,6 +28,7 @@
       settings = {
         spawn-at-startup = [
          noct-exe
+          (lib.getExe' pkgs.polkit_gnome "polkit-gnome-authentication-agent-1")
           "${pkgs.open-vm-tools}/bin/vmware-user"
           "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.wl-clipboard}/bin/wl-copy --primary --paste-once"
         ];
