@@ -8,7 +8,7 @@
       self.nixosModules.impureHardware
       self.nixosModules.metalHardware
       self.nixosModules.tuiSystem
-      self.nixosModules.niriDesktop
+      self.nixosModules.niriNoctaliaDesktop
       {
         networking.hostName = "nixCryle";
       }

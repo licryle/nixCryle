@@ -8,7 +8,7 @@
 
   perSystem = { pkgs, lib, self', ... }:
   let 
-    noct-exe = lib.getExe inputs.noctalia.packages.${pkgs.system}.default;
+    noct-exe = lib.getExe inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
     noctalia = cmd: "${noct-exe} msg ${cmd}";
   in
   {

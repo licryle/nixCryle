@@ -13,7 +13,7 @@
 
       self.nixosModules.tuiSystem
 
-      self.nixosModules.niriDesktop
+      self.nixosModules.niriNoctaliaDesktop
       {
         networking.hostName = "proCryle";
       }
