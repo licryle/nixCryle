@@ -145,7 +145,7 @@ sudo nixos-rebuild switch --flake .#nixCryle --impure
 
 - **niriDesktop**: Wayland compositor setup:
   - Niri compositor
-  - sysc-greet login screen
+  - Noctalia-greet login screen
 
 ### User Configuration (`modules/users/`)
 

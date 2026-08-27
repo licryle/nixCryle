@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.nixosModules.userLicryle = { pkgs, user, nixOsVersion, ... }: {
+  flake.nixosModules.userLicryle = { pkgs, user, nixOsVersion, ... }: {    
     users.users.${user} = {
         shell = pkgs.fish;
         isNormalUser = true;
@@ -9,6 +9,12 @@
         ];
     };
     home-manager.users.${user} = { pkgs, ... }: {
+      imports = [ inputs.noctalia.homeModules.default ];
+      programs.noctalia = {
+        enable = true;
+        settings = ../3-GUI/noctalia-v5.toml;
+      };
+
       programs.git.enable = true;
 
       home.stateVersion = nixOsVersion; 

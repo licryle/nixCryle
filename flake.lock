@@ -52,49 +52,6 @@
         "type": "github"
       }
     },
-    "flake-utils": {
-      "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "gslapper": {
-      "inputs": {
-        "flake-utils": [
-          "sysc-greet",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "sysc-greet",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1771646943,
-        "narHash": "sha256-9xRcrQaiNVQzynncoWepaT4SzzMeZoFopIcuPIch2iY=",
-        "owner": "Nomadcxx",
-        "repo": "gSlapper",
-        "rev": "6e18f69f21f1b3ef1afb1c7b8eaf1b4890a716ef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Nomadcxx",
-        "repo": "gSlapper",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -205,16 +162,36 @@
         ]
       },
       "locked": {
-        "lastModified": 1787742524,
-        "narHash": "sha256-oF+EMt+AUyVeNh7yQ75BishmxezgNMUcmxRc9foRJPI=",
+        "lastModified": 1787770646,
+        "narHash": "sha256-XKVCQNebyqRXTMwI/YR9nMd42Q5nYP65L8xkNcbQDXM=",
         "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "rev": "b0958cf2885ca63bf46b62fbea8f582ffd3bb9e2",
+        "repo": "noctalia",
+        "rev": "75a00852ddeaf31442bb3bbe8440fc71b3fbe9e6",
         "type": "github"
       },
       "original": {
         "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
+        "repo": "noctalia",
+        "type": "github"
+      }
+    },
+    "noctalia-greeter": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787482410,
+        "narHash": "sha256-R32LF+S4NnmJwSnzt5xKjb15RjYemb/ZZRnDnP5lxfs=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-greeter",
+        "rev": "5956c6f40249b2837bb260d25ea3953a2631fbdc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-greeter",
         "type": "github"
       }
     },
@@ -227,45 +204,8 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
-        "sysc-greet": "sysc-greet",
+        "noctalia-greeter": "noctalia-greeter",
         "wrapper-modules": "wrapper-modules"
-      }
-    },
-    "sysc-greet": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "gslapper": "gslapper",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1784905908,
-        "narHash": "sha256-hf6UN1ZmwtlmSovgRETR+xurMX3eop247GmAiRBmS58=",
-        "owner": "Nomadcxx",
-        "repo": "sysc-greet",
-        "rev": "e2a3966b7cc10795a962c16f660380f7e21c5bdd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Nomadcxx",
-        "repo": "sysc-greet",
-        "type": "github"
-      }
-    },
-    "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
       }
     },
     "wrapper-modules": {

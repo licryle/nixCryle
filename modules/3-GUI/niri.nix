@@ -8,10 +8,8 @@
 
   perSystem = { pkgs, lib, self', ... }:
   let 
-    noct-exe = lib.getExe self'.packages.noctalia;
-    noctalia = cmd: [
-      "${noct-exe} ipc call ${cmd}"
-    ];
+    noct-exe = lib.getExe inputs.noctalia.packages.${pkgs.system}.default;
+    noctalia = cmd: "${noct-exe} msg ${cmd}";
   in
   {
     packages.featureNiri = inputs.wrapper-modules.wrappers.niri.wrap {
@@ -29,17 +27,10 @@
       v2-settings = true;
       settings = {
         spawn-at-startup = [
-          (lib.getExe self'.packages.noctalia)
+         noct-exe
           "${pkgs.open-vm-tools}/bin/vmware-user"
           "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.wl-clipboard}/bin/wl-copy --primary --paste-once"
         ];
-
-        switch-events = {
-          "lid-close" = {
-            spawn = [ "sh" "-c" "${noct-exe} ipc call lockScreen lock" ];
-          };
-        };
-
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
         input = {
@@ -55,12 +46,10 @@
           disable-power-key-handling = true; # Don't let Niri handle the power button > straight to power off.
         };
 
-        layout.gaps = 5;
-        layout.struts.bottom = (builtins.fromJSON
-          (builtins.readFile ./noctalia.json)).dock.size * 80;
+        layout.gaps = 10;
 
         binds = {
-          "Ctrl+Space".spawn-sh = noctalia "launcher toggle";
+          "Ctrl+Space".spawn-sh = noctalia "panel-toggle launcher";
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
 
           "XF86LaunchA".toggle-overview = { };
@@ -139,28 +128,28 @@
 
           # ---Brightness ---
           "XF86MonBrightnessUp".spawn-sh =
-            noctalia "brightness increase";
+            noctalia "brightness-up";
           "XF86MonBrightnessDown".spawn-sh =
-            noctalia "brightness decrease";
+            noctalia "brightness-down";
 
           # Media keys
           "XF86AudioPrev".spawn-sh = noctalia "media previous";
-          "XF86AudioPlay".spawn-sh = noctalia "media playPause";
+          "XF86AudioPlay".spawn-sh = noctalia "media toggle";
           "XF86AudioNext".spawn-sh = noctalia "media next";
 
           "XF86AudioMute".spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86AudioRaiseVolume".spawn-sh =
-            noctalia "volume increase";
+            noctalia "volume-up";
           "XF86AudioLowerVolume".spawn-sh =
-            noctalia "volume decrease";
+            noctalia "volume-down";
             
           # Lock screen
-          "Ctrl+L".spawn-sh = noctalia "lockScreen lock";
-          "Mod+L".spawn-sh =  noctalia "lockScreen lock";
+          "Ctrl+L".spawn-sh = noctalia "session lock";
+          "Mod+L".spawn-sh = noctalia "session lock";
 
           # Spotlight‑style launcher (Fn+Space)
-          "XF86Search".spawn-sh = noctalia "launcher toggle";
-          "XF86LaunchB".spawn-sh = noctalia "launcher toggle";
+          "XF86Search".spawn-sh = noctalia "panel-toggle launcher";
+          "XF86LaunchB".spawn-sh = noctalia "panel-toggle launcher";
         };
       };
     };
