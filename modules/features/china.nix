@@ -38,6 +38,10 @@
             "Groups/0/Items/0".Name = "keyboard-${keyboardLayout}";
             "Groups/0/Items/1".Name = "pinyin";
           };
+          addons.pinyin.globalSection = {
+            CloudPinyinEnabled = false;
+            FirstRun = false;
+          };
         };
       };
     };
