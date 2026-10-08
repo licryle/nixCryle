@@ -24,6 +24,9 @@
           bbenoist.nix
         ];
       })
+
+      opencode
+      opencode-desktop
     ];
 
     environment.variables.EDITOR = "code";
