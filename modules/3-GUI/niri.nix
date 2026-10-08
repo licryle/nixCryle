@@ -24,7 +24,6 @@
         pkgs.libxinerama
       ];    
 
-      v2-settings = true;
       settings = {
         spawn-at-startup = [
          noct-exe
