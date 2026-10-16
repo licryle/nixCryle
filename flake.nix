@@ -38,6 +38,10 @@
     disko = { 
       url = "github:nix-community/disko";
     };
+
+    pdfcraft = {
+      url = "github:PDFCraftTool/pdfcraft";
+    };
   };
 
   outputs = inputs@{ self, flake-parts, ... }:

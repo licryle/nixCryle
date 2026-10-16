@@ -55,6 +55,7 @@
       # Themes & Icons
       qt6Packages.qt6ct
       papirus-icon-theme
+      inputs.pdfcraft.packages.${pkgs.stdenv.hostPlatform.system}.pdfcraft
     ];
 
     environment.sessionVariables = {
