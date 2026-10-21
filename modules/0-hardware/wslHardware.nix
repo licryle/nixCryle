@@ -7,6 +7,7 @@
     wsl = {
       enable = true;
       defaultUser = user;
+      interop.register = true;
     };
 
     boot.kernelModules = [ "vhci_hcd" ]; # Unable WSL to attach to USB devices from host with usbipd attach --wsl --busid 2-1

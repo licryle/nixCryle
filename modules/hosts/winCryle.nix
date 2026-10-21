@@ -12,7 +12,8 @@
         {
           networking.hostName = "winCryle";
           boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-          wsl.interop.register = true;
+          nix.settings.extra-platforms = [ "aarch64-linux" ];
+          programs.nix-ld.enable = true;
         }
       ];
 
