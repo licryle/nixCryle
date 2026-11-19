@@ -15,7 +15,10 @@
         settings = ./licryle/noctalia-v5.toml;
       };
 
-      programs.git.enable = true;
+      programs.git = {
+        enable = true;
+        lfs.enable = true;
+      };
 
       home.stateVersion = nixOsVersion; 
       home.file = {

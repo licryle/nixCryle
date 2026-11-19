@@ -2,6 +2,7 @@
   flake.nixosModules.devTools = { pkgs, ... }: {
     programs.git = {
       enable = true;
+      lfs.enable = true;
       config = {
         user.name = "Licryle";
         user.email = "cyrille@berliat.fr";
@@ -20,6 +21,7 @@
       pv
 
       android-studio
+      android-tools
 
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
