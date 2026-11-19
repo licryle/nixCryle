@@ -8,7 +8,6 @@
       self.nixosModules.metalHardware
       
       ({ config, ... }: {
-        networking.hostName = "gameCryle";
         users.users.${user}.extraGroups = [ "kvm" ];
 
         services.xserver.videoDrivers = [ "nvidia" ];
