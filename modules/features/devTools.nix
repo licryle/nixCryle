@@ -3,6 +3,8 @@
     programs.git = {
       enable = true;
       config = {
+        user.name = "Licryle";
+        user.email = "cyrille@berliat.fr";
         pull.rebase = true;
         init.defaultBranch = "main";
       };
