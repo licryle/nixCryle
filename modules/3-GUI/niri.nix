@@ -52,6 +52,9 @@
           "Ctrl+Space".spawn-sh = noctalia "panel-toggle launcher";
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
 
+
+          "Mod5+Tab".focus-window-previous = { }; #Mod5 is AltGr
+
           "XF86LaunchA".toggle-overview = { };
           "Mod+Space".toggle-overview = { };
 
