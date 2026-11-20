@@ -31,13 +31,31 @@
         };
       };
 
+      xdg.configFile."kitty/right_click.py".text = ''
+        from kittens.tui.handler import result_handler
+
+        def main(args):
+            pass
+
+        @result_handler(no_ui=True)
+        def handle_result(args, answer, target_window_id, boss):
+            window = boss.window_id_map.get(target_window_id)
+            if window is None:
+                return
+            if window.text_for_selection():
+                window.copy_to_clipboard()
+                window.clear_selection()
+            else:
+                boss.paste_from_clipboard()
+      '';
+
+      # 2. Configure Kitty to run the kitten on right-click
       programs.kitty = {
         enable = true;
         settings = {
-          copy_on_select="clipboard";
-          mouse_map="right press ungrabbed paste_from_clipboard";
+          mouse_map = "right press ungrabbed kitten right_click.py";
 
-          confirm_os_window_clok_bise = 0;
+          confirm_os_window_close = 0;
           dynamic_background_opacity = true;
           enable_audio_bell = false;
           mouse_hide_wait = "-1.0";
