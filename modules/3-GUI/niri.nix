@@ -83,6 +83,8 @@
           # --- Mouse Wheel Support ---
           "Mod+WheelScrollDown".focus-column-right = { };
           "Mod+WheelScrollUp".focus-column-left = { };
+          "Mod+Ctrl+WheelScrollUp".focus-window-or-workspace-up = { };
+          "Mod+Ctrl+WheelScrollDown".focus-window-or-workspace-down = { };
 
           # --- Moving Windows ---
           "Mod+Ctrl+Left".move-column-left = { };
@@ -120,7 +122,7 @@
           "Mod+Ctrl+7".move-column-to-workspace = 7;
           "Mod+Ctrl+8".move-column-to-workspace = 8;
           "Mod+Ctrl+9".move-column-to-workspace = 9;
-
+ 
           # --- Screenshots ---
           "Mod+P".screenshot-window = { };
           "Print".screenshot = { };
