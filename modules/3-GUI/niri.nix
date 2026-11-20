@@ -57,9 +57,10 @@
 
           "Mod+Q".close-window = { };
           "Ctrl+Alt+Delete".quit = { };
+          "Ctrl+Mod5+Delete".quit = { }; #Mod5 is AltGr
 
           # --- Extra Copy/Paste / Undo / Redo
-          "Mod+C".spawn-sh = "wtype -M ctrl c -m ctrl";
+          "Mod+C".spawn-sh = "wtype -M ctrl c -m ctrl";   
           "Mod+X".spawn-sh = "wtype -M ctrl x -m ctrl";
           "Mod+V".spawn-sh = "wtype -M ctrl v -m ctrl";
           "Mod+Z".spawn-sh = "wtype -M ctrl z -m ctrl";
@@ -67,6 +68,7 @@
 
           # --- Toggle inputs
           "Alt+Space".spawn-sh = "${pkgs.fcitx5}/bin/fcitx5-remote -t";
+          "Mod5+Space".spawn-sh = "${pkgs.fcitx5}/bin/fcitx5-remote -t"; #Mod5 is AltGr
 
           # --- Backlight
           "XF86KbdBrightnessUp".spawn-sh = "${pkgs.brightnessctl}/bin/brightnessctl -d 'smc::kbd_backlight' s 25%+";
@@ -123,8 +125,10 @@
           "Mod+P".screenshot-window = { };
           "Print".screenshot = { };
           "Mod+alt+P".screenshot-screen = { };
+          "Mod+Mod5+P".screenshot-screen = { }; #Mod5 is AltGr
           "Ctrl+Print".screenshot-screen = { };
           "Alt+Print".screenshot-window = { };
+          "Mod5+Print".screenshot-window = { }; #Mod5 is AltGr
 
           # ---Brightness ---
           "XF86MonBrightnessUp".spawn-sh =
