@@ -23,6 +23,7 @@
 
       self.nixosModules.tuiSystem
       self.nixosModules.gaming
+      self.nixosModules.localInference
 
       self.nixosModules.niriNoctaliaDesktop
       {
