@@ -1,4 +1,4 @@
-{ user, ... }: {
+{ pkgs, user, ... }: {
   flake.nixosModules.gaming = { pkgs, ... }:
     let
       ds4XboxBridge = pkgs.writers.writePython3Bin "ds4-xbox-bridge" {
@@ -81,7 +81,10 @@
       programs.gamemode.enable = true;
       programs.gamescope.enable = true;
 
-      environment.systemPackages = with pkgs; [ mangohud ];
+      environment.systemPackages = with pkgs; [
+        mangohud
+        heroic
+      ];
 
       hardware.uinput.enable = true;
       hardware.steam-hardware.enable = true;
