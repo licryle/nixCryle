@@ -21,6 +21,7 @@
       settings = {
         keyboard = {
           layout = keyboardLayout;
+          numlock = true;
         };
       };
     };

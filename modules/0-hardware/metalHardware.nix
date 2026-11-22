@@ -12,6 +12,23 @@
 
     services.upower.enable = true;
 
-    hardware.bluetooth.enable = true;
+    # Hibernate when the lid is closed, including when docked to an external
+    # display (logind ignores the lid in that case by default).
+    services.logind.settings.Login = {
+      HandleLidSwitch = "hibernate";
+      HandleLidSwitchExternalPower = "hibernate";
+      HandleLidSwitchDocked = "hibernate";
+    };
+
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+
+      settings = {
+        Policy = {
+          AutoEnable = true;
+        };
+      };
+    };
   };
 }
