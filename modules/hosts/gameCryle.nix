@@ -61,6 +61,9 @@
               enable = true;
               # Let the dGPU actually power down while idle on battery.
               finegrained = true;
+              # The 595 kernel suspend notifier throws "Error in service of
+              # callback" on S4 entry; use the nvidia-sleep.sh services instead.
+              kernelSuspendNotifier = false;
             };
             open = true;
             package = config.boot.kernelPackages.nvidiaPackages.stable;
