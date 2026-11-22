@@ -6,7 +6,7 @@
     modules = [
       self.nixosModules.impureHardware
       self.nixosModules.metalHardware
-      
+
       ({ config, pkgs, ... }:
         let
           # niri is Wayland, so the stock `nvidia-offload` script (X11/GLX vars
@@ -30,6 +30,50 @@
             export DRI_PRIME=0
             exec "$@"
           '';
+
+          # The AMD GPIO controller (AMDI0030:00 at 0xFED81500) latches a
+          # wake status on GPIO 4. The kernel's pinctrl_amd wake handler then
+          # aborts every S3 attempt ("PM: Triggering wakeup from IRQ 7").
+          # Writing EOI_MASK (bit 29) to WAKE_INT_MASTER_REG (base + 0xFC)
+          # clears the latched status, as the driver itself does on IRQ EOI.
+          clearAmdGpioWake = pkgs.writeCBin "clear-amd-gpio-wake" ''
+            #include <fcntl.h>
+            #include <stdint.h>
+            #include <stdio.h>
+            #include <sys/mman.h>
+            #include <unistd.h>
+
+            int main(void) {
+              const off_t page = 0xFED81000;            /* AMDI0030:00 MMIO page */
+              const size_t reg = 0x5FC;                 /* base + 0xFC = WAKE_INT_MASTER_REG */
+              const uint32_t eoi = 1U << 29;            /* EOI_MASK */
+
+              int fd = open("/dev/mem", O_RDWR | O_SYNC);
+              if (fd < 0) { perror("open /dev/mem"); return 1; }
+
+              volatile uint8_t *map = mmap(NULL, 0x1000, PROT_READ | PROT_WRITE,
+                                           MAP_SHARED, fd, page);
+              if (map == MAP_FAILED) { perror("mmap"); close(fd); return 1; }
+
+              /* GPIO 4 pin register: base + 4*4 = 0xFED81510 (offset 0x510).
+               * Clear the S0I3/S3 wake-enable bits (13/14) so the line cannot
+               * re-latch a wake status, and W1C the interrupt/wake status
+               * bits (28/29), which are set again during the suspend path. */
+              volatile uint32_t *pin4 = (volatile uint32_t *)(map + 0x510);
+              uint32_t v = *pin4;
+              v &= ~((1U << 13) | (1U << 14));
+              v |= (1U << 28) | (1U << 29);
+              *pin4 = v;
+
+              /* Preserve other master-register bits, like the driver's EOI path. */
+              volatile uint32_t *master = (volatile uint32_t *)(map + reg);
+              *master = *master | eoi;
+
+              munmap((void *)map, 0x1000);
+              close(fd);
+              return 0;
+            }
+          '';
         in {
           boot.extraModulePackages = with config.boot.kernelPackages; [ lenovo-legion-module ];
           boot.kernelModules = [ "legion_laptop" ];
@@ -41,7 +85,20 @@
           # driver instead (slower, but survives suspend/hibernate).
           boot.kernelParams = [
             "usb_storage.quirks=0bda:9201:u"
+            # /dev/mmio helper needs to clear the latched AMD GPIO wake status
+            # in an MMIO range already claimed by the pinctrl_amd driver.
+            "iomem=relaxed"
           ];
+
+          systemd.services.clear-amd-gpio-wake = {
+            description = "Clear stale AMD GPIO wake status before suspend";
+            serviceConfig = {
+              Type = "oneshot";
+              ExecStart = "${clearAmdGpioWake}/bin/clear-amd-gpio-wake";
+            };
+            before = [ "systemd-suspend.service" ];
+            requiredBy = [ "systemd-suspend.service" ];
+          };
 
           # Hybrid graphics: the Radeon 610M (iGPU) drives the desktop and the
           # RTX 4060 (dGPU) stays off until something is launched through
