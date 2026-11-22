@@ -19,6 +19,7 @@
       gh
       lazygit
       pv
+      filezilla
 
       android-studio
       android-tools
