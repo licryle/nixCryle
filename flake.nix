@@ -38,6 +38,10 @@
     disko = { 
       url = "github:nix-community/disko";
     };
+
+    nixos-modules = {
+      url = "github:licryle/nixos-modules";
+    };
   };
 
   outputs = inputs@{ self, flake-parts, ... }:

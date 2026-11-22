@@ -2,6 +2,7 @@
   # WSL stack: coreConfig only (no boot, no GUI, no Wayland IME)
   flake.nixosModules.tuiSystem = { config, lib, ... }: {
     imports = [
+      self.nixosModules.bootSplash
       self.nixosModules.nix
       self.nixosModules.podman
       self.nixosModules.coreConfig
