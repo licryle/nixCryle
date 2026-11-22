@@ -76,6 +76,18 @@
       programs.steam = {
         enable = true;
         extest.enable = true;
+        # Steam is the "on demand" dGPU case: every game/Proton process it
+        # spawns inherits these, while the desktop itself stays on the iGPU.
+        # GLX covers XWayland games, Vulkan covers native/proton VK games.
+        package = pkgs.steam.override {
+          extraEnv = {
+            __NV_PRIME_RENDER_OFFLOAD = "1";
+            __NV_PRIME_RENDER_OFFLOAD_PROVIDER = "NVIDIA-G0";
+            __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+            __VK_LAYER_NV_optimus = "NVIDIA_only";
+            GBM_BACKEND = "nvidia-drm";
+          };
+        };
       };
 
       programs.gamemode.enable = true;

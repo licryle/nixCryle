@@ -14,11 +14,17 @@
 
     # Hibernate when the lid is closed, including when docked to an external
     # display (logind ignores the lid in that case by default).
+    # Note: logind's "sleep" action means suspend-then-hibernate, which does
+    # not work on this hardware (RTC cannot wake from S3).
     services.logind.settings.Login = {
       HandleLidSwitch = "hibernate";
       HandleLidSwitchExternalPower = "hibernate";
       HandleLidSwitchDocked = "hibernate";
     };
+
+    boot.kernelParams = [
+      "mem_sleep_default=deep"
+    ];
 
     hardware.bluetooth = {
       enable = true;
