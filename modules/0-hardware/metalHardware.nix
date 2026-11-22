@@ -12,15 +12,17 @@
 
     services.upower.enable = true;
 
-    # Hibernate when the lid is closed, including when docked to an external
-    # display (logind ignores the lid in that case by default).
-    # Note: logind's "sleep" action means suspend-then-hibernate, which does
-    # not work on this hardware (RTC cannot wake from S3).
+    # On lid close: suspend first, then hibernate after 1 hour.
+    # Applies when docked / on external power too (logind ignores the lid in
+    # those cases by default).
     services.logind.settings.Login = {
-      HandleLidSwitch = "hibernate";
-      HandleLidSwitchExternalPower = "hibernate";
-      HandleLidSwitchDocked = "hibernate";
+      HandleLidSwitch = "suspend-then-hibernate";
+      HandleLidSwitchExternalPower = "suspend-then-hibernate";
+      HandleLidSwitchDocked = "suspend-then-hibernate";
     };
+
+    # Delay before suspend-then-hibernate turns S3 into S4.
+    systemd.sleep.settings.Sleep.HibernateDelaySec = "1h";
 
     boot.kernelParams = [
       "mem_sleep_default=deep"
