@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.nixosModules.userLicryle = { pkgs, user, nixOsVersion, ... }: {    
+  flake.nixosModules.userLicryle = { inputs, pkgs, user, nixOsVersion, ... }: {    
     users.users.${user} = {
         shell = pkgs.fish;
         isNormalUser = true;
@@ -8,6 +8,18 @@
         packages = with pkgs; [
         ];
     };
+
+    imports = [
+      inputs.nixos-modules.nixosModules.usbChime
+    ];
+    # USB connect/disconnect chime from licryle/nixos-modules.
+    services.usbChime = {
+      enable = true;
+      user = user;
+      theme = "COSMIC";
+      volume = 3; # modest db boost
+    };
+  
     home-manager.users.${user} = { pkgs, ... }: {
       imports = [ inputs.noctalia.homeModules.default ];
       programs.noctalia = {
