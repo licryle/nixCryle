@@ -42,6 +42,10 @@
     nixos-modules = {
       url = "github:licryle/nixos-modules";
     };
+
+    wechat-devtools = {
+      url = "github:MaikoTan/wechat-devtools";
+    };
   };
 
   outputs = inputs@{ self, flake-parts, ... }:

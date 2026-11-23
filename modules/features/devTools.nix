@@ -19,6 +19,7 @@
     };
 
     environment.systemPackages = with pkgs; [
+      inputs.wechat-devtools.packages.${pkgs.stdenv.hostPlatform.system}.default
       vim
       git-filter-repo
       gh
