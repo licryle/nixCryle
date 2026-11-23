@@ -7,6 +7,8 @@
       self.nixosModules.impureHardware
       self.nixosModules.metalHardware
 
+      self.nixosModules.canonMG3600
+
       ({ config, pkgs, ... }:
         let
           # niri is Wayland, so the stock `nvidia-offload` script (X11/GLX vars
