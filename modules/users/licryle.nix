@@ -34,11 +34,11 @@
 
       home.stateVersion = nixOsVersion; 
       home.file = {
-        "Pictures/wallpaper.png".source = ./${user}/Pictures/wallpaper.png;
+        "Pictures/Wallpapers/wallpaper.png".source = ./${user}/Pictures/wallpaper.png;
         "Pictures/profile.jpg".source = ./${user}/Pictures/profile.jpg;
         ".cache/noctalia/wallpapers.json" = {
           text = builtins.toJSON {
-            defaultWallpaper = "/home/${user}/Pictures/wallpaper.png";
+            defaultWallpaper = "/home/${user}/Pictures/Wallpapers/wallpaper.png";
           };
         };
       };

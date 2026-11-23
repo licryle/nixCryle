@@ -138,13 +138,16 @@ source = "wallpaper"
 wallpaper_scheme = "vibrant"
 
 [wallpaper]
-directory = "/home/licryle/Pictures"
+directory = "/home/licryle/Pictures/Wallpapers"
+
+    [wallpaper.automation]
+    enabled = true
 
     [wallpaper.default]
-    path = "/home/licryle/Pictures/wallpaper.png"
+    path = "/home/licryle/Pictures/Wallpapers/wallpaper.png"
 
     [wallpaper.last]
-    path = "/home/licryle/Pictures/wallpaper.png"
+    path = "/home/licryle/Pictures/Wallpapers/wallpaper.png"
 
 [widget.brightness]
 enabled = false
