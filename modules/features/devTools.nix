@@ -11,7 +11,12 @@
       };
     };
 
-    programs.vscode.enable = true;
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+      ];
+    };
 
     environment.systemPackages = with pkgs; [
       vim
@@ -23,12 +28,6 @@
 
       android-studio
       android-tools
-
-      (vscode-with-extensions.override {
-        vscodeExtensions = with vscode-extensions; [
-          bbenoist.nix
-        ];
-      })
 
       opencode
       opencode-desktop
