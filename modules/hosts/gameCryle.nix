@@ -116,6 +116,7 @@
 
           hardware.nvidia = {
             modesetting.enable = true;
+            dynamicBoost.enable = true;
             powerManagement = {
               enable = true;
               # Let the dGPU actually power down while idle on battery.
