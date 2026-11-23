@@ -48,6 +48,19 @@
 
         layout.gaps = 10;
 
+        window-rule = [
+          {
+            draw-border-with-background = false;
+          }
+        ];
+
+        include = _: {
+          props = [
+            "~/.config/niri/noctalia.kdl"
+            { optional = true; }
+          ];
+        };
+
         binds = {
           "Ctrl+Space".spawn-sh = noctalia "panel-toggle launcher";
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
