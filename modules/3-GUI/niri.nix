@@ -48,9 +48,17 @@
 
         layout.gaps = 10;
 
-        window-rule = [
+        window-rules = [
           {
             draw-border-with-background = false;
+          }
+ 
+          {
+            matches = [ { app-id = "^kitty$"; } ];
+            draw-border-with-background = true;
+            focus-ring = {
+              active-color = "rgba(0, 0, 0, 0.15)";
+            };
           }
         ];
 
