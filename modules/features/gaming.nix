@@ -1,5 +1,5 @@
 { pkgs, user, ... }: {
-  flake.nixosModules.gaming = { pkgs, ... }:
+  flake.nixosModules.gaming = { pkgs, user, ... }:
     let
       ds4XboxBridge = pkgs.writers.writePython3Bin "ds4-xbox-bridge" {
         libraries = [ pkgs.python3Packages.evdev ];
@@ -73,6 +73,16 @@
       '';
     in
     {
+      # Steam's downloader latches onto IPv6 CDN addresses (240e::/2408::)
+      # that this host cannot route (only ULA fd35::/64, no IPv6 default
+      # route), then never falls back to IPv4 -> "No connection" on every
+      # update. Disabling IPv6 in the kernel breaks Steam's resolver entirely
+      # (CDN endpoints become 0.0.0.0), so use Steam's own switch instead:
+      # it makes the downloader create an ipv4-only HTTP client.
+      home-manager.users.${user}.home.file.".local/share/Steam/steam_dev.cfg".text = ''
+        @bDisableDualStackDownloads 1
+      '';
+
       programs.steam = {
         enable = true;
         extest.enable = true;
