@@ -144,6 +144,7 @@
 
       self.nixosModules.tuiSystem
       self.nixosModules.gaming
+      self.nixosModules.vgn98ProV1
       self.nixosModules.localInference
 
       self.nixosModules.niriNoctaliaDesktop
