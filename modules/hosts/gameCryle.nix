@@ -144,7 +144,107 @@
 
       self.nixosModules.tuiSystem
       self.nixosModules.gaming
-      self.nixosModules.vgn98ProV1
+      inputs.nixos-modules.nixosModules.vgn98ProV1
+      {
+        hardware.vgn.v98ProV1 = {
+          lighting = {
+            enable = true;
+            brightness = 4;
+            mode = "Stepping Snow Without Trace";
+            speed = 2;
+            chroma = false;
+            color = "00796b";
+          };
+          performance = {
+            macMode = false;
+            sleepTime = 1;
+            pollingRate = 1000;
+            smartSpeedX = true;
+            sixKeyRollover = false;
+            winLock = false;
+            wasdSwap = false;
+          };
+          keys = {
+            "F12".value = "PrintScreen";
+            "Del".value = "Mute";
+            "Insert".value = "Volume Down";
+            "PgUp".value = "Volume Up";
+            "PgDn".value = "Play/Pause";
+            "Win Left".value = "Fn";
+            "Alt Left".value = "Alt Right";
+            "Fn".value = "Win Left";
+            "Num Lock".value = "Del";
+          };
+          fnKeys = {
+            "Backspace".value = "Power";
+            "Left Shift".value = "NIXlessthan";
+            "Z".value = "NIXgreaterthan";
+            "Num Lock".value = "Num Lock";
+          };
+          macros = [
+            {
+              name = "WINlessthan";
+              mode = "repeat-stop";
+              events = [
+                { delay = 0; status = "down"; code = 226; deviceType = 1; }
+                { delay = 0; status = "down"; code = 94; deviceType = 1; }
+                { delay = 0; status = "up"; code = 94; deviceType = 1; }
+                { delay = 0; status = "down"; code = 98; deviceType = 1; }
+                { delay = 0; status = "up"; code = 98; deviceType = 1; }
+                { delay = 0; status = "up"; code = 226; deviceType = 1; }
+              ];
+            }
+            {
+              name = "WINgreaterthan";
+              mode = "repeat-stop";
+              events = [
+                { delay = 0; status = "down"; code = 226; deviceType = 1; }
+                { delay = 0; status = "down"; code = 94; deviceType = 1; }
+                { delay = 0; status = "up"; code = 94; deviceType = 1; }
+                { delay = 0; status = "down"; code = 90; deviceType = 1; }
+                { delay = 0; status = "up"; code = 90; deviceType = 1; }
+                { delay = 0; status = "up"; code = 226; deviceType = 1; }
+              ];
+            }
+            {
+              name = "NIXlessthan";
+              mode = "repeat-finish";
+              events = [
+                { delay = 2; status = "down"; code = 224; deviceType = 1; }
+                { delay = 2; status = "down"; code = 225; deviceType = 1; }
+                { delay = 2; status = "down"; code = 24; deviceType = 1; }
+                { delay = 2; status = "up"; code = 24; deviceType = 1; }
+                { delay = 2; status = "up"; code = 225; deviceType = 1; }
+                { delay = 2; status = "up"; code = 224; deviceType = 1; }
+                { delay = 2; status = "down"; code = 32; deviceType = 1; }
+                { delay = 2; status = "up"; code = 32; deviceType = 1; }
+                { delay = 2; status = "down"; code = 6; deviceType = 1; }
+                { delay = 2; status = "up"; code = 6; deviceType = 1; }
+                { delay = 2; status = "down"; code = 40; deviceType = 1; }
+                { delay = 200; status = "up"; code = 40; deviceType = 1; }
+              ];
+            }
+            {
+              name = "NIXgreaterthan";
+              mode = "repeat-finish";
+              events = [
+                { delay = 2; status = "down"; code = 224; deviceType = 1; }
+                { delay = 2; status = "down"; code = 225; deviceType = 1; }
+                { delay = 2; status = "down"; code = 24; deviceType = 1; }
+                { delay = 2; status = "up"; code = 24; deviceType = 1; }
+                { delay = 2; status = "up"; code = 224; deviceType = 1; }
+                { delay = 2; status = "up"; code = 225; deviceType = 1; }
+                { delay = 2; status = "down"; code = 32; deviceType = 1; }
+                { delay = 2; status = "up"; code = 32; deviceType = 1; }
+                { delay = 2; status = "down"; code = 8; deviceType = 1; }
+                { delay = 2; status = "up"; code = 8; deviceType = 1; }
+                { delay = 2; status = "down"; code = 40; deviceType = 1; }
+                { delay = 200; status = "up"; code = 40; deviceType = 1; }
+              ];
+            }
+          ];
+        };
+      }
       self.nixosModules.localInference
 
       self.nixosModules.niriNoctaliaDesktop
